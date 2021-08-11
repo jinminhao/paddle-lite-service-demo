@@ -227,7 +227,7 @@ std::string process(cv::Mat &input_image,
 // https://answers.opencv.org/question/91344/load-image-from-url/
 size_t write_data(char *ptr, size_t size, size_t nmemb, void *userdata)
 {
-    vector<uchar> *stream = (vector<uchar>*)userdata;
+    std::vector<uchar> *stream = (std::vector<uchar>*)userdata;
     size_t count = size * nmemb;
     stream->insert(stream->end(), ptr, ptr + count);
     return count;
@@ -237,7 +237,7 @@ size_t write_data(char *ptr, size_t size, size_t nmemb, void *userdata)
 // function to retrieve the image as cv::Mat data type
 cv::Mat curlImg(const char *img_url, int timeout=10)
 {
-    vector<uchar> stream;
+    std::vector<uchar> stream;
     CURL *curl = curl_easy_init();
     curl_easy_setopt(curl, CURLOPT_URL, img_url); //the img url
     curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, write_data); // pass the writefunction
@@ -245,7 +245,7 @@ cv::Mat curlImg(const char *img_url, int timeout=10)
     curl_easy_setopt(curl, CURLOPT_TIMEOUT, timeout); // timeout if curl_easy hangs, 
     CURLcode res = curl_easy_perform(curl); // start curl
     curl_easy_cleanup(curl); // cleanup
-    return imdecode(stream, -1); // 'keep-as-is'
+    return cv::imdecode(stream, -1); // 'keep-as-is'
 }
 
 void DemoCtrl::asyncHandleHttpRequest(const HttpRequestPtr& req, std::function<void (const HttpResponsePtr &)> &&callback)
@@ -264,10 +264,8 @@ void DemoCtrl::asyncHandleHttpRequest(const HttpRequestPtr& req, std::function<v
 
     std::shared_ptr<paddle::lite_api::PaddlePredictor> predictor =
       paddle::lite_api::CreatePaddlePredictor<paddle::lite_api::MobileConfig>(config);
-    cv::VideoCapture cap;
-    printf("TESTESTEST");
     std::cout<<input_image_path.c_str();
-    cv::Mat input_image = curlImg(input_image_path);
+    cv::Mat input_image = curlImg(input_image_path.c_str());
     // cv::Mat input_image = cv::imread(input_image_path);
     std::string out_str = process(input_image, word_labels, predictor);
     auto resp=HttpResponse::newHttpResponse();

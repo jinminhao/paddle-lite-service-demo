@@ -25,6 +25,7 @@ sudo apt-get -y install libjsoncpp-dev
 sudo apt-get -y install uuid-dev
 sudo apt-get -y install zlib1g-dev
 sudo apt-get -y install libgmp3-dev
+sudo apt-get -y isntall libcurl4-gnutls-dev
 sudo apt-get -y install git
 
 git clone https://github.com/an-tao/drogon.git
