@@ -19,6 +19,11 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 include_directories(./third-party/Paddle-Lite/include)
 link_directories(./third-party/Paddle-Lite/libs/armv7hf)
+# link_directories(./third-party/Paddle-Lite/libs/armv8)
+set(CMAKE_CXX_FLAGS "-mfpu=neon-vfpv4 ${CMAKE_CXX_FLAGS}")
+set(CMAKE_C_FLAGS "-mfpu=neon-vfpv4 ${CMAKE_C_FLAGS}" )
+# set(CMAKE_CXX_FLAGS "-march=armv8-a ${CMAKE_CXX_FLAGS}")
+# set(CMAKE_C_FLAGS "-march=armv8-a ${CMAKE_C_FLAGS}")
 
 find_package(OpenCV REQUIRED)
 if(OpenCV_FOUND OR OpenCV_CXX_FOUND)
