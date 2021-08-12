@@ -1,8 +1,13 @@
 # Paddle Lite Service Demo
 
+## Overview
+
+This service demo is based on [paddle-lite object detection](https://github.com/PaddlePaddle/Paddle-Lite-Demo/tree/master/PaddleLite-armlinux-demo/object_detection_demo). Drogon is used as the web application framework.
+
 ## Drogon Installation
 
 ### OSX
+You can try drogon on Mac OS and the following commands are for drogon installation on OSX.
 ``` bash
 brew install cmake
 brew install c-ares
@@ -14,6 +19,7 @@ cd drogon
 ```
 
 ### ARMLinux
+The installation of drogon on Raspberry Pi or other ARMLiux devices are as follows
 ``` bash
 apt-get update
 apt-get -y install sudo
