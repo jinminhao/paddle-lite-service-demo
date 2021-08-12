@@ -32,3 +32,18 @@ git clone https://github.com/an-tao/drogon.git
 cd drogon 
 sudo ./build.sh
 ```
+
+## Server Installtion and Test
+Server:
+``` bash
+cd service-demo
+mkdir build && cd build
+cmake ..
+make
+./demo
+```
+
+Client:s
+``` bash
+curl -H "Content-Type: application/json" -X POST -d '{"url": "xxxx"}' http://0.0.0.0:8080
+```
