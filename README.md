@@ -7,7 +7,7 @@ This service demo is based on [paddle-lite object detection](https://github.com/
 ## Drogon Installation
 
 ### OSX
-You can try drogon on Mac OS and the following commands are for drogon installation on OSX.
+You can try using drogon on Mac OS. The following commands are for drogon installation on OSX.
 ``` bash
 brew install cmake
 brew install c-ares
