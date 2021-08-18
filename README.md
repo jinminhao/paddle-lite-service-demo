@@ -40,7 +40,7 @@ sudo ./build.sh
 ```
 
 ## Server Installtion and Test
-Server:
+Server installation
 ``` bash
 cd service-demo
 mkdir build && cd build
@@ -49,7 +49,7 @@ make
 ./demo
 ```
 
-Client:
+Client test
 ``` bash
 curl -H "Content-Type: application/json" -X POST -d '{"url": "xxxx"}' http://0.0.0.0:8080
 ```
